@@ -63,20 +63,22 @@ describe ('Definition') do
 
   describe('.find_by_word') do
     it("finds definitions for a word") do
-      definition = Definition.new({:body => 'It is a big mamal', :word_id => @word.id})
+      word2 = Word.new({:name => "Fish"})
+      Word.save(word2)
+      definition = Definition.new({:body => 'It has no arms', :word_id => @word.id})
       Definition.save(definition)
-      definition2 = Definition.new({:body => 'It is grey', :word_id => @word.id})
+      definition2 = Definition.new({:body => 'It swims', :word_id => word2.id})
       Definition.save(definition2)
-      expect(Definition.find_by_word(definition2.id)).to(eq([definition2]))
+      expect(Definition.find_by_word(word2.id)).to(eq([definition2]))
     end
   end
 
   describe('#definitions') do
     it("returns a word's definitions") do
       word = Word.new({:name => "Truck"})
-      definition = Definition.new({:body => 'It is a vehicle', :word_id => @word.id})
+      definition = Definition.new({:body => 'It is a vehicle', :word_id => word.id})
       Definition.save(definition)
-      definition2 = Definition.new({:body => 'It is made of metal', :word_id => @word.id})
+      definition2 = Definition.new({:body => 'It is made of metal', :word_id => word.id})
       Definition.save(definition2)
       expect(word.definitions).to(eq([definition, definition2]))
     end

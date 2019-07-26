@@ -38,7 +38,6 @@ class Definition
   def self.find_by_word(word_id)
     definitions = []
     @@definitions.values.each do |definition|
-      binding.pry
       if definition.word_id == word_id
         definitions.push(definition)
       end
