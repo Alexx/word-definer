@@ -8,7 +8,7 @@ describe('Word') do
   end
 
   describe('==') do
-    it("is the same message if it has the same attributes as another message") do
+    it("is the same word if it has the same attributes as another word") do
       word = Word.new({:name => "Elephant"})
       Word.save(word)
       word2 = Word.new({:name => "Elephant"})
@@ -34,7 +34,7 @@ describe('Word') do
   end
 
   describe('#delete') do
-    it("deletes an word by id") do
+    it("deletes a word by id") do
       word = Word.new({:name => "Elephant"})
       Word.save(word)
       word2 = Word.new({:name => "Tree"})
@@ -54,5 +54,35 @@ describe('Word') do
       expect(Word.all).to(eq([]))
     end
   end
+
+  describe('#update') do
+    it("updates a word by id") do
+      word = Word.new({:name => "Elephant"})
+      Word.save(word)
+      word.update("Doink")
+      expect(word.name).to(eq("Doink"))
+    end
+  end
+
+  describe('.find') do
+    it("finds a word by id") do
+      word = Word.new({:name => "Elephant"})
+      Word.save(word)
+      word2 = Word.new({:name => "Tree"})
+      Word.save(word2)
+      expect(Word.find(word.id)).to(eq(word))
+    end
+  end
+
+  describe('.search') do
+    it('finds a word by name')do
+    word = Word.new({:name => "Elephant"})
+    Word.save(word)
+    word2 = Word.new({:name => "Tree"})
+    Word.save(word2)
+    search = Word.search("Tree")
+    expect(search).to(eq([word2]))
+  end
+end
 
 end
