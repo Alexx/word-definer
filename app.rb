@@ -27,10 +27,12 @@ end
 
 get ('/words/:id') do
   @word = Word.find(params[:id].to_i)
+  erb :word
 end
 
 post ('/words/:id') do
-  body = params[:body]
-  definition = Definiton.new({:body => body, :word_id => @word.id})
+  @word = Word.find(params[:id].to_i)
+  definition = Definition.new({:body => params[:word_body], :word_id => @word.id})
+  Definition.save(definition)
   erb :word
 end
