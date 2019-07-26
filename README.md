@@ -14,6 +14,10 @@ Step 1: Clone this repository to your desktop
 
 Step 2: In terminal, within the project directory, type bundle install
 
+or
+
+Check it out on [Heroku](https://cryptic-ridge-62967.herokuapp.com/)
+
 ## Technologies Used
 
 _Ruby_
