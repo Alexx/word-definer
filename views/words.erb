@@ -1,0 +1,21 @@
+<h3>Words</h3>
+
+<% if @words.any? %>
+  <ul>
+    <% @words.each do |word| %>
+      <li><a href="/words/<%= word.id %>"><%= word.name %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no words to display.</p>
+<% end %>
+
+<a href="/words/new">Add a new word</a>
+
+<form action="/words">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Search</button>
+</form>

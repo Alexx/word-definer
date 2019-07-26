@@ -1,0 +1,18 @@
+<h2><%= @word.name %></h2>
+<% if @word.definitions.any? %>
+  <ul>
+    <% @word.definitions.each do |definition| %>
+      <li><%= definition.body %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no definitions to display.</p>
+<% end %>
+
+<form action="/words/<%= @word.id %>" method="post">
+  <div class="form-group">
+    <label for="word_body">Word Definition</label>
+    <input id="name" class="form-control" type="text" name="word_body">
+  </div>
+  <button type="submit" class="btn">Create</button>
+</form>
