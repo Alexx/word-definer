@@ -38,7 +38,6 @@ class Word
 
   def update(name)
     self.name = name
-    @@words[self.id] = Word.new({:name => self.name, :id => self.id})
   end
 
   def delete()

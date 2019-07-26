@@ -22,11 +22,7 @@
     <% else %>
     <p>There are currently no definitions to display.</p>
     <% end %>
-    <form action="/words/<%= @word.id() %>" method="post">
-      <input name="_method" type="hidden" value="delete">
-
-      <button type="submit">Delete word</button>
-    </form>
+    <p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>
   </div>
 </div>
 <a href="/words" method="get">Back to words</a>
