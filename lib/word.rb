@@ -54,4 +54,8 @@ class Word
     Definition.find_by_word(self.id)
   end
 
+  def delete
+    @@words.delete(self.id)
+  end
+
 end

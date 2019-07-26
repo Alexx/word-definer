@@ -41,3 +41,10 @@ post ('/words/:id') do
   Definition.save(definition)
   erb :word
 end
+
+delete ('/words/:id') do
+  @word = Word.find(params[:id].to_i)
+  @word.delete
+  @words = Word.all
+  erb :words
+end
