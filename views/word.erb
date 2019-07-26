@@ -1,17 +1,33 @@
-<h2 class="text-center"><%= @word.name %></h2>
-<% if @word.definitions.any? %>
-  <div class="row">
-    <% @word.definitions.each do |definition| %>
-      <div class="col-md-4"><h4 class="text-center">Definition #<%= definition.id %></h4><%= definition.body %></div>
-  <% end %>
-  </div>
-<% else %>
-  <p>There are currently no definitions to display.</p>
-<% end %>
 
 <div class="card">
+  <div class="card-header">
+    <h2 class="text-center"><%= @word.name.capitalize %></h2>
+  </div>
+  <div class="card-body text-center">
+    <% if @word.definitions.any? %>
+    <div class="row">
+      <% @word.definitions.each do |definition| %>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="text-center">Definition</h4>
+          </div>
+          <div class="card-body">
+            <%= definition.body.capitalize %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% else %>
+    <p>There are currently no definitions to display.</p>
+    <% end %>
+  </div>
+</div>
+
+<a href="/words" method="get">Back to words</a>
+<div class="card">
   <div class="card-body">
-    <a href="/words" method="get">Back to words</a>
     <form action="/words/<%= @word.id %>" method="post">
       <div class="form-group">
         <label for="word_body">Create a new word definition</label>
