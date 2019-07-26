@@ -4,7 +4,17 @@ require('word')
 
 describe('Word') do
   before(:each) do
-    #code to run before each test
+    Word.clear
+  end
+
+  describe('==') do
+    it("is the same message if it has the same attributes as another message") do
+      word = Word.new({:name => "Elephant"})
+      Word.save(word)
+      word2 = Word.new({:name => "Elephant"})
+      Word.save(word2)
+      expect(word).to(eq(word2))
+    end
   end
 
   describe(".all") do
@@ -12,5 +22,37 @@ describe('Word') do
       expect(Word.all).to(eq([]))
     end
   end
-  
+
+  describe('.save') do
+    it("saves a word to the words hash") do
+      word = Word.new({:name => "Elephant"})
+      Word.save(word)
+      word2 = Word.new({:name => "Tree"})
+      Word.save(word2)
+      expect(Word.all).to(eq([word, word2]))
+    end
+  end
+
+  describe('#delete') do
+    it("deletes an word by id") do
+      word = Word.new({:name => "Elephant"})
+      Word.save(word)
+      word2 = Word.new({:name => "Tree"})
+      Word.save(word2)
+      word.delete
+      expect(Word.all).to(eq([word2]))
+    end
+  end
+
+  describe('.clear') do
+    it("clears all words") do
+      word = Word.new({:name => "Elephant"})
+      Word.save(word)
+      word2 = Word.new({:name => "Tree"})
+      Word.save(word2)
+      Word.clear
+      expect(Word.all).to(eq([]))
+    end
+  end
+
 end
