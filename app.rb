@@ -10,8 +10,13 @@ get ('/') do
 end
 
 get ('/words') do
-  @words = Word.all
-  erb :words
+  if params[:search] == nil
+    @words = Word.all
+    erb :words
+  else
+    @words = Word.search(params[:search])
+    erb :search_results
+  end
 end
 
 post ('/words') do
