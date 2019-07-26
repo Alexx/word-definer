@@ -20,6 +20,12 @@ _Ruby_
 
 _Rspec_
 
+_HTML_
+
+_CSS_
+
+_Bootstrap_
+
 ## Licensing
 
 MIT License
