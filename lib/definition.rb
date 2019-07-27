@@ -48,7 +48,6 @@ class Definition
   def update(body, word_id)
     self.body = body
     self.word_id = word_id
-    @@definitions[self.id] = Definition.new({:body => self.body, :word_id => self.word_id, :id => self.id})
   end
 
   def delete

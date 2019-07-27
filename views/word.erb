@@ -1,4 +1,3 @@
-
 <div class="card">
   <div class="card-header">
     <h2 class="text-center"><%= @word.name.capitalize %></h2>
@@ -14,6 +13,7 @@
           </div>
           <div class="card-body">
             <%= definition.body.capitalize %>
+            <p><a href="/words/<%= @word.id %>/<%= definition.id%>">Edit definition</a></p>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
     <% else %>
     <p>There are currently no definitions to display.</p>
     <% end %>
-    <p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>
+    <a href="/words/<%= @word.id %>/edit">Edit word</a>
   </div>
 </div>
 <a href="/words" method="get">Back to words</a>
